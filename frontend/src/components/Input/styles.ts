@@ -15,11 +15,11 @@ export const Container = styled.div<ContainerProps>`
   flex: 1;
   align-items: center;
   ${props => props.isFocused && css`
-    color: #7CFC00;
-    border-color: #7CFC00;
+    color: #0000FF;
+    border-color: #0000FF;
   `}
   ${props => props.isFilled && css`
-    color: #7CFC00;
+    color: #0000FF;
   `}
   svg {
     flex: 1;
