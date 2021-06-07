@@ -7,21 +7,21 @@ import { FormEncodeDecodeUrlStyles } from './styles';
 
 interface IFormEncodeDecodeUrlProps {
   handleEncodeUrl: (event: FormEvent<HTMLFormElement>) => Promise<void>;
-  handleDecodeUrl: (event: FormEvent<HTMLFormElement>) => Promise<void>;
+  // handleDecodeUrl: (event: FormEvent<HTMLFormElement>) => Promise<void>;
   setNewInputLongUrl: React.Dispatch<React.SetStateAction<string>>;
-  setNewInputShortUrl: React.Dispatch<React.SetStateAction<string>>;   
+  // setNewInputShortUrl: React.Dispatch<React.SetStateAction<string>>;   
   newInputLongUrl: string;
-  newInputShortUrl: string;
+  // newInputShortUrl: string;
   inputError: string;  
 }
 
 export function FormEncodeDecodeUrl({
   handleEncodeUrl,
-  handleDecodeUrl,
+  // handleDecodeUrl,
   setNewInputLongUrl,
-  setNewInputShortUrl,
+  // setNewInputShortUrl,
   newInputLongUrl,
-  newInputShortUrl,
+  // newInputShortUrl,
 }: IFormEncodeDecodeUrlProps) {
 
   return (
@@ -37,18 +37,6 @@ export function FormEncodeDecodeUrl({
           />
 
           <button type="submit">Encode</button>
-        </Form>
-
-        <Form onSubmit={handleDecodeUrl}>
-          <Input 
-            name="shortUrl"
-            icon={FiGlobe}
-            value={newInputShortUrl}
-            onChange={(e) => setNewInputShortUrl(e.target.value)}
-            placeholder="Paste the short Url"
-          />
-
-          <button type="submit">Decode</button>
         </Form>
       </FormEncodeDecodeUrlStyles>
     </>
