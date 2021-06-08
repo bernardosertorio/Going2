@@ -1,14 +1,18 @@
 import { Header } from '../../components/Header'; 
 import { FormEncodeDecodeUrl } from '../../components/FormEncodeDecodeUrl';
+import { UrlSearcher } from '../../components/UrlEncodeDecodeContents';
 
 import { useFormEncodeDecodeUrl } from '../../hooks/useEncodeDecodeUrl';
+
+
 
 export function Dashboard() {
   const {
     handleEncodeUrl, 
     newInputLongUrl,
     setNewInputLongUrl,
-    inputError
+    inputError,
+    data,
   } = useFormEncodeDecodeUrl();
   return (
     <>
@@ -19,6 +23,7 @@ export function Dashboard() {
         setNewInputLongUrl={setNewInputLongUrl}
         inputError={inputError}
       />
+      <UrlSearcher getUrl={data}/>
     </>
   )
 };

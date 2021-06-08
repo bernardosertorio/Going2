@@ -3,7 +3,8 @@ import {
   ReactNode, 
   useContext,  
   useState, 
-  FormEvent } from 'react';
+  FormEvent,
+  useEffect } from 'react';
 
   import api from '../services/api';
 
@@ -11,13 +12,15 @@ import {
     children: ReactNode;
   };
 
-  interface IEncodeDecodeUrlData {
+  interface IUrlData {
+    id?: string; 
     longUrl?: string;
     shortUrl?: string
   };
 
   interface ContextDataFormEncodeDecodeUrl {
     handleEncodeUrl: (event: FormEvent<HTMLFormElement>) => Promise<void>;
+    data: IUrlData | undefined;
     // handleDecodeUrl: (event: FormEvent<HTMLFormElement>) => Promise<void>;
     setNewInputLongUrl: React.Dispatch<React.SetStateAction<string>>;
     setNewInputShortUrl: React.Dispatch<React.SetStateAction<string>>;
@@ -33,7 +36,7 @@ import {
   export function FormEncodeDecodeUrlProvider({ children }: IPropsFormEncodeDecodeUrl) {
     const [newInputLongUrl, setNewInputLongUrl] = useState('');
     const [newInputShortUrl, setNewInputShortUrl] = useState('');
-    const [data, setData] = useState<IEncodeDecodeUrlData | undefined>();
+    const [data, setData] = useState<IUrlData | undefined>({});
     const [inputError, setInputError] = useState('');
 
     async function handleEncodeUrl(event: FormEvent<HTMLFormElement>): Promise<void> {
@@ -43,12 +46,10 @@ import {
       }
 
       try {
-        const response = await api.post<IEncodeDecodeUrlData>('/encode', {
+        const response = await api.post<IUrlData>('/encode', {
           ...event,
           newInputLongUrl,
           });
-
-          console.log(response, 'aqui!')
 
           const { shortUrl } = response.data;
 
@@ -60,9 +61,14 @@ import {
       }
     };
 
+    useEffect(() => {
+      api.get<IUrlData>('/decode').then(response => setData(response.data))
+    }, [data]);
+
     return (
       <FormEncodeDecodeUrlContext.Provider value={{
         handleEncodeUrl,
+        data,
         inputError,
         newInputLongUrl,
         newInputShortUrl,
