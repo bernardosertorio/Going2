@@ -2,27 +2,28 @@ import { UrlContentsStyles } from './styles';
 import { FiChevronRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
-interface IUrl {
+interface IUrlData {
   id?: string;
   longUrl?: string;
   shortUrl?: string;
+  urlCode?: string
 };
 
-interface IUrlSearcherProps {
-  getUrl: IUrl | undefined;      
+interface IUrlDataSearcherProps {
+  getUrlData: IUrlData | undefined;      
 }
 
 export function UrlSearcher({ 
-  getUrl
-}: IUrlSearcherProps) {
+  getUrlData
+}: IUrlDataSearcherProps) {
 
   return (
     <> 
       <UrlContentsStyles>
-        <Link key={getUrl?.id} to={`/:${getUrl?.shortUrl}`}>
+        <Link key={getUrlData?.id} to={`/:${getUrlData?.shortUrl}`}>
           <div>
             <strong>Short Url</strong>
-            <p>{getUrl?.shortUrl}</p> 
+            <p>{getUrlData?.shortUrl}</p> 
           </div>
           <FiChevronRight size={20} /> 
         </Link>

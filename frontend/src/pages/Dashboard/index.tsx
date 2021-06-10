@@ -23,7 +23,7 @@ export function Dashboard() {
         setNewInputLongUrl={setNewInputLongUrl}
         inputError={inputError}
       />
-      <UrlSearcher getUrl={data}/>
+      <UrlSearcher getUrlData={data}/>
     </>
   )
 };

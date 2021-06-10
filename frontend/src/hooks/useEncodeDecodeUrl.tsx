@@ -3,8 +3,8 @@ import {
   ReactNode, 
   useContext,  
   useState, 
-  FormEvent,
-  useEffect } from 'react';
+  FormEvent
+} from 'react';
 
   import api from '../services/api';
 
@@ -16,6 +16,7 @@ import {
     id?: string; 
     longUrl?: string;
     shortUrl?: string
+    urlCode?: string
   };
 
   interface ContextDataFormEncodeDecodeUrl {
@@ -54,16 +55,11 @@ import {
           const { shortUrl } = response.data;
 
           setData({ shortUrl });
-          setNewInputLongUrl('');
           setInputError('');
       } catch (err) {
         setInputError('Erro ao encurtar a url. Verifique se a url está correta')
       }
     };
-
-    useEffect(() => {
-      api.get<IUrlData>('/decode').then(response => setData(response.data))
-    }, [data]);
 
     return (
       <FormEncodeDecodeUrlContext.Provider value={{
