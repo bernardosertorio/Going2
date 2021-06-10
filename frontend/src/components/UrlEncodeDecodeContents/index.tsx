@@ -21,7 +21,7 @@ export function UrlSearcher({
       <UrlContentsStyles>
         <a key={getUrlData?.id} href={getUrlData?.shortUrl}>
           <div>
-            <strong>Short Url</strong>
+            <strong>Url</strong>
             <p>{getUrlData?.shortUrl}</p> 
           </div>
           <FiChevronRight size={20} /> 

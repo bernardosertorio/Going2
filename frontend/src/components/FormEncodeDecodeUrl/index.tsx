@@ -34,9 +34,17 @@ export function FormEncodeDecodeUrl({
             value={newInputLongUrl}
             onChange={(e) => setNewInputLongUrl(e.target.value)}
             placeholder="Paste the long Url"
-          />
-
+          />  
           <button type="submit">Encode</button>
+
+          <Input 
+            name="shortUrl"
+            icon={FiGlobe}
+            value={newInputLongUrl}
+            onChange={(e) => setNewInputLongUrl(e.target.value)}
+            placeholder="Paste the short Url"
+          />
+          <button type="submit">Decode</button>
         </Form>
       </FormEncodeDecodeUrlStyles>
     </>

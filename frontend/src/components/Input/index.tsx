@@ -3,7 +3,8 @@ import {
   useEffect, 
   useRef, 
   useState, 
-  useCallback } from 'react';
+  useCallback 
+} from 'react';
 
 import { IconBaseProps } from 'react-icons';
 import { useField } from '@unform/core';
