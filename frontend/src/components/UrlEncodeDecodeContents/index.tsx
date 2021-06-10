@@ -1,6 +1,5 @@
 import { UrlContentsStyles } from './styles';
 import { FiChevronRight } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
 
 interface IUrlData {
   id?: string;
@@ -20,13 +19,13 @@ export function UrlSearcher({
   return (
     <> 
       <UrlContentsStyles>
-        <Link key={getUrlData?.id} to={`/:${getUrlData?.shortUrl}`}>
+        <a key={getUrlData?.id} href={getUrlData?.shortUrl}>
           <div>
             <strong>Short Url</strong>
             <p>{getUrlData?.shortUrl}</p> 
           </div>
           <FiChevronRight size={20} /> 
-        </Link>
+        </a>
       </UrlContentsStyles>
     </>
   );
